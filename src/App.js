@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddedCard from "./components/AddedCard";
+import NameCard from "./components/NameCard";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  const addName = newdata => {
+    const newData = [newdata];
+    setData(newData);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     {data.length > 0 ? <AddedCard data={data} /> : <NameCard onSubmit={addName} />}
     </div>
   );
 }
